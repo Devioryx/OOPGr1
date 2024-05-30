@@ -1,6 +1,6 @@
 #include "Team.h"
 
-bool Team::operator()(Person& p1, Person& p2)
+bool Team::operator()(const Person& p1,const Person& p2)
 {
 	try
 	{

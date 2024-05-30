@@ -14,7 +14,7 @@ struct Relation
 class Team : public Group
 {
 public:
-	bool operator()(Person& p1, Person& p2);
+	bool operator()(const Person& p1,const Person& p2);
 
 	bool operator > (const Team& other) const;
 	bool operator < (const Team& other) const;
