@@ -1,29 +1,5 @@
 #include "Group.h"
 
-Group::Group()
-{}
-
-Group::Group(const Group & other)
-{
-	copy(other);
-}
-
-Group& Group::operator=(const Group& other)
-{
-	if (this != &other)
-	{
-		free();
-		copy(other);
-	}
-
-	return *this;
-}
-
-Group::~Group()
-{
-	free();
-}
-
 const std::size_t Group::getPeopleCount() const
 {
 	return this->people.getSize();

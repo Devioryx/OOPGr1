@@ -5,12 +5,6 @@
 class Group
 {
 public:
-	Group();
-	Group(const Group& other);
-	Group& operator=(const Group& other);
-
-	~Group();
-
 	const std::size_t getPeopleCount() const;
 
 	Group& operator+=(const Person& other);

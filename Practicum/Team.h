@@ -16,12 +16,8 @@ class Team : public Group
 public:
 	bool operator()(const Person& p1,const Person& p2);
 
-	bool operator >= (const Team& other) const;
-	bool operator <= (const Team& other) const;
-
 	bool operator > (const Team& other) const;
 	bool operator < (const Team& other) const;
-
 
 	operator bool() const;
 

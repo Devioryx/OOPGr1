@@ -20,66 +20,36 @@ bool Team::operator()(const Person& p1,const Person& p2)
 
 }
 
-bool Team::operator>=(const Team& other) const
-{
-	std::size_t thisEmployerCnt = 0;
-	std::size_t otherEmployerCnt = 0;
-
-	Vector<std::size_t> visited;
-
-	for (std::size_t i = 0; i < this->relations.getSize(); i++)
-	{
-		if (!visited.includes(this->relations[i].employer.getIdentification()))
-			visited.push_back(this->relations[i].employer.getIdentification());
-	}
-	thisEmployerCnt = visited.getSize();
-
-	visited = Vector<std::size_t>();
-
-	for (std::size_t i = 0; i < other.relations.getSize(); i++)
-	{
-		if (!visited.includes(other.relations[i].employer.getIdentification()))
-			visited.push_back(other.relations[i].employer.getIdentification());
-	}
-	otherEmployerCnt = visited.getSize();
-
-	return thisEmployerCnt >= otherEmployerCnt;
-}
-
-bool Team::operator<=(const Team& other) const
-{
-	std::size_t thisEmployerCnt = 0;
-	std::size_t otherEmployerCnt = 0;
-
-	Vector<std::size_t> visited;
-
-	for (std::size_t i = 0; i < this->relations.getSize(); i++)
-	{
-		if (!visited.includes(this->relations[i].employer.getIdentification()))
-			visited.push_back(this->relations[i].employer.getIdentification());
-	}
-	thisEmployerCnt = visited.getSize();
-
-	visited = Vector<std::size_t>();
-
-	for (std::size_t i = 0; i < other.relations.getSize(); i++)
-	{
-		if (!visited.includes(other.relations[i].employer.getIdentification()))
-			visited.push_back(other.relations[i].employer.getIdentification());
-	}
-	otherEmployerCnt = visited.getSize();
-
-	return thisEmployerCnt <= otherEmployerCnt;
-}
 
 bool Team::operator<(const Team& other) const
 {
-	return !(*this >= other);
+	std::size_t thisEmployerCnt = 0;
+	std::size_t otherEmployerCnt = 0;
+
+	Vector<std::size_t> visited;
+
+	for (std::size_t i = 0; i < this->relations.getSize(); i++)
+	{
+		if (!visited.includes(this->relations[i].employer.getIdentification()))
+			visited.push_back(this->relations[i].employer.getIdentification());
+	}
+	thisEmployerCnt = visited.getSize();
+
+	visited = Vector<std::size_t>();
+
+	for (std::size_t i = 0; i < other.relations.getSize(); i++)
+	{
+		if (!visited.includes(other.relations[i].employer.getIdentification()))
+			visited.push_back(other.relations[i].employer.getIdentification());
+	}
+	otherEmployerCnt = visited.getSize();
+
+	return thisEmployerCnt < otherEmployerCnt;
 }
 
 bool Team::operator>(const Team& other) const
 {
-	return !(*this <= other);
+	return other < *this;
 }
 
 Team::operator bool() const
