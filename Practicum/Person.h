@@ -2,14 +2,13 @@
 #include <iostream>
 #include <cstring>
 #include "Vector.h"
+
 class Person
 {
 public:
 
 	Person() = default;
 	Person(const char* fName, const char* sName, const char* lName, const std::size_t identification);
-
-	Person* clone() const;
 
 	const char* getFName() const { return this->fName; }
 	const char* getSName() const { return this->sName; }

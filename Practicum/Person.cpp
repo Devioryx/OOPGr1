@@ -11,10 +11,6 @@ Person::Person(const char* fName, const char* sName, const char* lName, const st
 	setSName(sName);
 }
 
-Person* Person::clone() const
-{
-	return new Person(*this);
-}
 
 bool Person::operator==(const Person& other) const
 {

@@ -11,16 +11,16 @@ public:
 
 	~Vector();
 
-	void push_back(T p);
+	void push_back(const T& p);
 	void erase(const std::size_t index);
 
-	const T operator[](const std::size_t index) const;
-	T operator[](const std::size_t index);
+	const T& operator[](const std::size_t index) const;
+	T& operator[](const std::size_t index);
 
 	const std::size_t getSize() const { return this->size; }
 	const std::size_t getCapacity() const { return this->capacity; }
 
-	bool includes(const T other) const;
+	bool includes(const T& other) const;
 
 	void clear();
 private:
@@ -36,7 +36,7 @@ private:
 
 
 template<typename T>
-inline bool Vector<T>::includes(const T other) const
+inline bool Vector<T>::includes(const T& other) const
 {
 	for (std::size_t i = 0; i < this->size; i++)
 	{
@@ -72,6 +72,11 @@ void Vector<T>::copy(const Vector& other)
 	this->size = other.size;
 
 	this->data = new T [this->capacity];
+
+	for (size_t i = 0; i < other.getSize(); i++)
+	{
+		this->data[i] = other.data[i];
+	}
 }
 
 template<typename T>
@@ -123,7 +128,7 @@ Vector<T>::~Vector()
 }
 
 template<typename T>
-void Vector<T>::push_back(T p)
+void Vector<T>::push_back(const T& p)
 {
 	if (this->size == this->capacity)
 		resize();
@@ -147,7 +152,7 @@ void Vector<T>::erase(const std::size_t index)
 }
 
 template<typename T>
-const T Vector<T>::operator[](const std::size_t index) const
+const T& Vector<T>::operator[](const std::size_t index) const
 {
 	if (index >= this->size)
 		throw std::out_of_range("Vector: Invalid [] Index");
@@ -156,7 +161,7 @@ const T Vector<T>::operator[](const std::size_t index) const
 }
 
 template<typename T>
-T Vector<T>::operator[](const std::size_t index)
+T& Vector<T>::operator[](const std::size_t index)
 {
 	if (index >= this->size)
 		throw std::out_of_range("Vector: Invalid [] Index");
