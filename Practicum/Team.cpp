@@ -53,11 +53,10 @@ bool Team::operator<(const Team& other) const
 
 Team::operator bool()
 {
-	Vector<std::size_t> visited;
 	try
 	{
 
-		checkCycle(visited);
+		checkCycle();
 		
 	}
 	catch (...)
@@ -68,7 +67,7 @@ Team::operator bool()
 	return true;
 }
 
-void Team::checkCycle(Vector<std::size_t>& visited)
+void Team::checkCycle()
 {
 	for (int i = 0; i < relations.getSize(); i++) {
 		std::size_t employer = relations[i].employer.getIdentification();

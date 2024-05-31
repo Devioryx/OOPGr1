@@ -25,6 +25,6 @@ public:
 private:
 	Vector<Relation> relations;
 
-	void checkCycle(Vector<std::size_t>& visited);
+	void checkCycle();
 };
 
