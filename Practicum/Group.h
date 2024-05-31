@@ -24,7 +24,5 @@ protected:
 	Vector<Person> people;
 
 private:
-	void free();
-	void copy(const Group& other);
 };
 

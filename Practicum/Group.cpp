@@ -80,19 +80,6 @@ Person& Group::operator[](const std::size_t identity)
 	return this->people[index];
 }
 
-void Group::free()
-{
-	this->people.clear();
-}
-
-void Group::copy(const Group& other)
-{
-	for (std::size_t i = 0; i < other.people.getSize(); i++)
-	{
-		this->people.push_back(other.people[i]);
-	}
-}
-
 const std::size_t Group::operator()() const
 {
 	return this->getPeopleCount();
