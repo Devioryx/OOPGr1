@@ -1,4 +1,4 @@
-#include "Team.h"
+﻿#include "Team.h"
 
 bool Team::operator()(const Person& p1,const Person& p2)
 {
@@ -54,10 +54,11 @@ bool Team::operator<(const Team& other) const
 Team::operator bool()
 {
 	Vector<std::size_t> visited;
-
 	try
 	{
+
 		checkCycle(visited);
+		
 	}
 	catch (...)
 	{
@@ -69,12 +70,19 @@ Team::operator bool()
 
 void Team::checkCycle(Vector<std::size_t>& visited)
 {
-	for (std::size_t i = 0; i < this->relations.getSize(); i++)
-	{
-		visited.push_back(this->relations[i].employer.getIdentification());
+	for (int i = 0; i < relations.getSize(); i++) {
+		std::size_t employer = relations[i].employer.getIdentification();
+		std::size_t employee = relations[i].employee.getIdentification();
 
-		if (visited.includes(this->relations[i].employee.getIdentification()))
-			throw std::runtime_error("Cycle Detected");
+		for (int j = 0; j < relations.getSize(); j++) {
+			if (relations[j].employer.getIdentification() == employee) {
+				if (relations[j].employee.getIdentification() == employer) {
+					throw std::runtime_error("Cycle Detected");
+				}
+				employee = relations[j].employee.getIdentification();
+				j = -1;
+			}
+		}
 	}
 
 }
