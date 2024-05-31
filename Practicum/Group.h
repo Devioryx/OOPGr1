@@ -22,7 +22,5 @@ public:
 
 protected:
 	Vector<Person> people;
-
-private:
 };
 
